@@ -57,28 +57,7 @@ public void deleteContact(int contactId) throws SQLException {
     }
 }
 
-// Method untuk mengupdate kontak ke tabel
-public void updateContact(Kontak contact) throws SQLException {
-    String sql = "UPDATE contacts SET nama = ?, nomor_telepon = ?, kategori = ? WHERE id = ?";
-    try (Connection conn = DatabaseConnection.getConnection();
-        PreparedStatement pstmt = conn.prepareStatement(sql)) {
-        pstmt.setString(1, contact.getNama());
-        pstmt.setString(2, contact.getNomorTelepon());
-        pstmt.setString(3, contact.getKategori());
-        pstmt.setInt(4, contact.getId());
-        pstmt.executeUpdate();
-    }
-}
-// Method untuk menghapus kontak di tabel
-public void deleteContact(int contactId) throws SQLException {
-    String sql = "DELETE FROM contacts WHERE id = ?";
-    try (Connection conn = DatabaseConnection.getConnection();
-        PreparedStatement pstmt = conn.prepareStatement(sql)) {
-        pstmt.setInt(1, contactId);
-        pstmt.executeUpdate();
 
-    }
-}
 // Method untuk mencari kontak di tabel
 public List<Kontak> searchContacts(String keyword) throws SQLException {
     List<Kontak> contacts = new ArrayList<>();
